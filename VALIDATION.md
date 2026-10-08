@@ -1,35 +1,38 @@
-# BareFront Presentation Runtime v1 — Validation
+# BareFront Presentation Runtime v2 — Validation
 
 Target: Debian 13 (Trixie), amd64.
 
-## M7 runtime acceptance
+## Runtime acceptance
 
-All 16 BareFront systems completed their M7 presentation and
-controller-exit acceptance.
+The v2 runtime has passed BareFront presentation and controller-exit
+acceptance on the BareFront M7.
 
-Keyboard Esc and Xbox Guide return directly to BareFront.
+Validated behaviour includes:
 
-The release binaries were retained unchanged for distribution.
+- clean v2 installation
+- repeated-install idempotence
+- exact known v1 to v2 upgrade
+- refusal of unknown or modified installed runtimes
+- installation-specific Vulkan layer manifest
+- BareFront private runtime resolver
+- PS1 gameplay with F8 and Home unable to alter the active shader
+- Xbox Guide exit retained
+- Saturn controller disc handling retained while shader state remains fixed
 
-## Clean Debian installation
+## Public release validation
 
-A clean Debian 13 XFCE/X11 VM received a source-only BareFront
-snapshot. No installed M7 emulators, runtime, ROMs or saves were
-transferred.
-
-The BareFront v0.12 installer completed successfully using the
-pinned presentation release archive.
+The exact public GitHub v2 assets were downloaded through the release
+URL used by BareFront.
 
 Verified:
 
-- Release archive SHA-256.
-- Installed Gamescope SHA-256.
-- Installed vkBasalt SHA-256.
-- VM-specific Vulkan layer manifest.
-- No missing linked libraries in the private binaries.
-- Installed exit helpers, including Amiberry's SDL2 Guide helper.
-- Bash syntax for all 17 production launcher scripts.
-- No explicit installer failure markers.
+- Published binary archive SHA-256.
+- Published source archive SHA-256.
+- Isolated fresh installation from the public binary archive.
+- Installation-specific Vulkan manifest.
+- Installed presentation runtime verification.
+- Repeated installation remains idempotent.
 
-VM gameplay and automatic GitHub-download installation are not
-claimed as complete by this validation record.
+The published v2 source archive contains the corresponding Debian source
+packages and all BareFront patches, including the vkBasalt no-toggle
+patch introduced for v2.

@@ -1,4 +1,4 @@
-BareFront Presentation Runtime v1 — release candidate
+BareFront Presentation Runtime v2
 Target: Debian 13 (Trixie), amd64
 
 Contents:
@@ -8,12 +8,15 @@ Contents:
 These are BareFront's privately patched presentation components.
 They do not replace the Debian system installations.
 
-The installer must create vkBasalt.json with an absolute library_path
+The installer creates vkBasalt.json with an absolute library_path
 pointing to this installation's runtime/vkbasalt/libvkbasalt.so.
 
 The archive intentionally does not include a machine-specific manifest.
 
-Original Debian source packages and BareFront modifications are supplied
-in the accompanying sources archive.
+Compared with v1, v2 also disables vkBasalt's runtime keyboard
+shader-toggle path. BareFront owns shader selection before emulator
+launch, and the configured enableOnLaunch state remains fixed for
+the emulator session.
 
-This candidate must pass clean-VM validation before public release.
+Original Debian source packages and BareFront modifications are supplied
+in the accompanying v2 source archive.

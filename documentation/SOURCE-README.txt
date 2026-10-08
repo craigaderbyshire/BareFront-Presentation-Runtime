@@ -1,4 +1,4 @@
-BareFront Presentation Runtime v1 — corresponding source
+BareFront Presentation Runtime v2 — corresponding source
 
 Gamescope:
   Debian source version: 3.16.22+ds-1~bpo13+1
@@ -10,11 +10,19 @@ Apply patches in this order:
 vkBasalt:
   Debian source version: 0.3.2.10-1
 
-Apply:
+Apply patches in this order:
   vkbasalt-0.3.2.10-x11-shutdown.patch
+  vkbasalt-0.3.2.10-barefront-no-toggle.patch
 
-The original Debian .dsc files and source archives are included.
+The X11 shutdown patch avoids closing the X11 display during
+process teardown.
+
+The BareFront no-toggle patch removes vkBasalt's runtime keyboard
+shader-toggle path. BareFront selects the shader before emulator
+launch, and the configured enableOnLaunch state remains fixed for
+the emulator session.
+
+The original Debian .dsc files and source archives are included
+in the published v2 source archive.
+
 The patches document BareFront's modifications.
-
-Build and installation automation will be added and validated before
-this release candidate is published.

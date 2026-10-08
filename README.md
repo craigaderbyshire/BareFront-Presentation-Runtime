@@ -2,7 +2,7 @@
 
 Privately installed, patched presentation components for BareFront.
 
-## Release v1
+## Release v2
 
 Target platform: Debian 13 (Trixie), amd64.
 
@@ -18,32 +18,43 @@ system installations.
 The installer generates a Vulkan layer manifest containing the
 installation-specific absolute path to the private vkBasalt library.
 
+## Changes from v1
+
+BareFront now owns shader selection entirely before emulator launch.
+
+vkBasalt's runtime keyboard shader-toggle handling is disabled, so the
+configured `enableOnLaunch` state remains fixed for the emulator session.
+
+The existing BareFront X11 and shutdown fixes are retained.
+
+This keeps emulator controls independent of presentation controls.
+
 ## Release assets
 
-- `barefront-presentation-debian13-amd64-v1.tar.xz`
-- `barefront-presentation-sources-v1.tar.xz`
+- `barefront-presentation-debian13-amd64-v2.tar.xz`
+- `barefront-presentation-sources-v2.tar.xz`
 - `SHA256SUMS`
 
 The source archive contains the corresponding Debian source packages
-and BareFront's three patches.
-
-The repository also contains the patches, release documentation,
-and Debian copyright information.
+and all BareFront patches required to reproduce the modified source.
 
 ## Validation status
 
-The pinned runtime has passed BareFront's M7 presentation and exit
-acceptance across all 16 supported systems.
+The published v2 runtime has passed BareFront validation including:
 
-A clean Debian 13 amd64 XFCE/X11 VM has successfully installed
-BareFront from a source-only snapshot using the exact release archive.
+- clean v2 installation
+- repeated-install idempotence
+- exact v1 to v2 upgrade
+- refusal of unknown or modified installed runtimes
+- installation-specific Vulkan manifest verification
+- BareFront private runtime resolution
+- PS1 shader-toggle isolation
+- Xbox Guide exit
+- Saturn controller disc handling with fixed shader state
 
-Both installed binaries passed SHA-256 verification. The VM-specific
-Vulkan manifest, linked-library audit and installer completion checks
-also passed.
+The exact public GitHub v2 assets were downloaded through the URL used
+by BareFront, their published SHA-256 hashes were verified, and the
+binary archive passed isolated fresh-install and reinstall validation.
 
-VM gameplay validation and automatic GitHub-download installation
-remain separate acceptance gates.
-
-BareFront verifies the binary archive SHA-256 before installation
-and separately checks the two installed binary hashes.
+BareFront verifies the binary archive SHA-256 before installation and
+separately checks the installed presentation binaries.
